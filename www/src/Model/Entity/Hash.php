@@ -15,13 +15,13 @@ class Hash implements JsonSerializable
      * @GeneratedValue
      * @Column(type="integer")
      */
-    private int $id;
+    private $id;
     /**
      * @Column(type="string")
      */
-    private string $hash;
+    private $hash;
 
-    public function __construct(string $hash)
+    public function __construct($hash)
     {
         $this->hash = base64_encode(trim($hash));
     }
@@ -31,7 +31,7 @@ class Hash implements JsonSerializable
         return $this->id;
     }
 
-    public function setId(int $id): void
+    public function setId($id): void
     {
         $this->id = $id;
     }
@@ -41,7 +41,7 @@ class Hash implements JsonSerializable
         return base64_decode($this->hash);
     }
 
-    public function setHash(string $hash): void
+    public function setHash($hash): void
     {
         $this->hash = base64_encode(trim($hash));
     }

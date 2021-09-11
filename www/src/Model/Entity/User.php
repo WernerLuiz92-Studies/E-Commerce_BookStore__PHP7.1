@@ -13,29 +13,29 @@ class User
      * @GeneratedValue
      * @Column(type="integer")
      */
-    private int $id;
+    private $id;
 
     /**
      * @Column(type="string", nullable=false)
      */
-    private string $name;
+    private $name;
 
     /**
      * @Column(type="string", columnDefinition="CHAR(1) NOT NULL", options={"default":"c"})
      */
-    private string $access_level;
+    private $access_level;
 
     /**
      * @Column(type="string")
      */
-    private string $email;
+    private $email;
 
     /**
      * @Column(type="string")
      */
-    private string $password;
+    private $password;
 
-    public function passwordMatch(string $purePassword): bool
+    public function passwordMatch($purePassword): bool
     {
         return password_verify($purePassword, $this->password);
     }
@@ -67,5 +67,10 @@ class User
         $this->access_level = $access_level;
 
         return $this;
+    }
+
+    public function getPassword(): string
+    {
+        return $this->password;
     }
 }
